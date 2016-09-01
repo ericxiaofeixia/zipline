@@ -650,7 +650,8 @@ class AssetFinder(object):
             # no equity owned the fuzzy symbol on the date requested
             raise SymbolNotFound(symbol=symbol)
 
-        if len(options) == 1:
+
+        if len(options) == 1 or len(set(map(itemgetter(0), options))) == 1:
             # there was only one owner, return it
             return self.retrieve_asset(options[0][0])
 
